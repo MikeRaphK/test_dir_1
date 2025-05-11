@@ -2,3 +2,5 @@
 This is a sample patch.
 
 This is a sample patch.
+
+This is a sample patch.
