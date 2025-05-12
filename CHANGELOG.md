@@ -1,0 +1,1 @@
+- Issue #10: Added a 200-word essay on programming to 'some.txt'.
