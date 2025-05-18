@@ -1,0 +1,7 @@
+*.o
+*.exe
+*.out
+*.log
+*.tmp
+*.DS_Store
+fibonacci.c
