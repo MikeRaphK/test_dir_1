@@ -1,0 +1,24 @@
+name: Run PAUL
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  clone-and-run-paul:
+    runs-on: ubuntu-latest
+    env:
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    steps:
+      - name: Clone PAUL and install dependencies
+        run: |
+          git clone https://github.com/MikeRaphK/PAUL.git
+          cd PAUL
+          pip install -r requirements.txt
+
+      - name: Ask PAUL for the newly created issue
+        run: |
+          cd PAUL
+          python main.py "${{ github.event.repository.html_url }}" "${{ github.event.issue.number }}"
