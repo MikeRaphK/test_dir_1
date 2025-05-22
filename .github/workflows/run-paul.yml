@@ -2,7 +2,7 @@ name: Run PAUL
 
 on:
   issues:
-    types: [opened]
+    types: [opened, reopened]
 
 jobs:
   clone-and-run-paul:
