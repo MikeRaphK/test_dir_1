@@ -4,27 +4,14 @@ on:
   issues:
     types: [opened, reopened]
 
-permissions:
-  contents: write
-  pull-requests: write
-
 jobs:
-  clone-and-run-paul:
+  run-paul:
     runs-on: ubuntu-latest
-    env:
-      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-      GITHUB_TOKEN: ${{ secrets.PAUL_GITHUB_TOKEN }}
-
     steps:
-      - name: Clone PAUL and install dependencies
-        run: |
-          git clone https://github.com/MikeRaphK/PAUL.git
-          cd PAUL
-          pip install -r requirements.txt
-
-      - name: Ask PAUL for the newly created issue
-        run: |
-          cd PAUL
-          git config user.name "PAUL[bot]"
-          git config user.email "paul-bot@paulbotgmail.com"
-          python main.py "${{ github.event.repository.html_url }}" "${{ github.event.issue.number }}"
+      - name: Run PAUL Automated PR
+        uses: MikeRaphK/PAUL@develop
+        with:
+          repo_url: ${{ github.event.repository.html_url }}
+          issue_number: ${{ github.event.issue.number }}
+          openai-api-key: ${{ secrets.OPENAI_API_KEY }}
+          github-token: ${{ secrets.PAUL_GITHUB_TOKEN }}
