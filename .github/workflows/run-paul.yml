@@ -8,7 +8,7 @@ jobs:
   run-paul:
     runs-on: ubuntu-latest
     steps:
-      - name: Run PAUL Automated PR
+      - name: Run PAUL
         uses: MikeRaphK/PAUL@develop
         with:
           repo_url: ${{ github.event.repository.html_url }}
