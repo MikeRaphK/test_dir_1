@@ -22,12 +22,9 @@ jobs:
           cd PAUL
           pip install -r requirements.txt
 
-      - name: Set up PAUL-bot identity
-        run: |
-          git config user.name "PAUL[bot]"
-          git config user.email "paul-bot@paulbotgmail.com"
-
       - name: Ask PAUL for the newly created issue
         run: |
           cd PAUL
+          git config user.name "PAUL[bot]"
+          git config user.email "paul-bot@paulbotgmail.com"
           python main.py "${{ github.event.repository.html_url }}" "${{ github.event.issue.number }}"
