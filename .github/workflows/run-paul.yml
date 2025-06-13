@@ -1,4 +1,4 @@
-name: Run PAUL
+name: "Run PAUL"
 
 on:
   # Workflow can be triggered with a click of a button. User inputs issue number.
@@ -14,11 +14,12 @@ on:
 jobs:
   run-paul:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Run PAUL
-        uses: MikeRaphK/PAUL@main
+      - name: Run PAUL Action
+        uses: MikeRaphK/PAUL@rebuilding
         with:
-          repo_url: https://github.com/${{ github.repository }}
-          issue_number: ${{ github.event.issue.number || github.event.inputs.issue_number }}
-          openai-api-key: ${{ secrets.OPENAI_API_KEY }}
-          github-token: ${{ secrets.PAUL_GITHUB_TOKEN }}
+          owner: ${{ github.repository_owner }}
+          repo: ${{ github.event.repository.name }}
+          issue: ${{ github.event.issue.number }}
+          openai_api_key: ${{ secrets.OPENAI_API_KEY }}
