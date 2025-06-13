@@ -30,4 +30,4 @@ jobs:
           repo: ${{ github.event.repository.name }}
           issue: ${{ github.event.issue.number || github.event.inputs.issue_number }}
           openai-api-key: ${{ secrets.OPENAI_API_KEY }}
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.PAUL_GITHUB_TOKEN }}
