@@ -24,7 +24,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Run PAUL Action
-        uses: MikeRaphK/PAUL@rebuilding
+        uses: MikeRaphK/PAUL@main
         with:
           owner: ${{ github.repository_owner }}
           repo: ${{ github.event.repository.name }}
