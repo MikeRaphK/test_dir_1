@@ -16,10 +16,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Run PAUL Action
-        uses: MikeRaphK/PAUL@rebuilding
+      - uses: MikeRaphK/PAUL@rebuilding
         with:
           owner: ${{ github.repository_owner }}
           repo: ${{ github.event.repository.name }}
-          issue: ${{ github.event.issue.number || inputs.issue_number }}
-          openai_api_key: ${{ secrets.OPENAI_API_KEY }}
+          issue: ${{ github.event.issue.number || github.event.inputs.issue_number }}
+          openai-api-key: ${{ secrets.OPENAI_API_KEY }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
