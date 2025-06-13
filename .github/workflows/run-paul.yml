@@ -21,5 +21,5 @@ jobs:
         with:
           owner: ${{ github.repository_owner }}
           repo: ${{ github.event.repository.name }}
-          issue: ${{ github.event.issue.number }}
+          issue: ${{ github.event.issue.number || github.event.inputs.issue_number }}
           openai_api_key: ${{ secrets.OPENAI_API_KEY }}
