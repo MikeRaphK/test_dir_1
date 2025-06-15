@@ -1,3 +1,4 @@
 def reverse_string(s):
-    if s:
-        return s[::-1]
+    if s is None:
+        return None
+    return s[::-1]
