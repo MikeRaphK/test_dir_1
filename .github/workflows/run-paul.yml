@@ -1,15 +1,15 @@
 name: "Run PAUL"
 
 on:
+  # Workflow is triggered automatically when an issue is opened, reopened, labeled, or edited.
+  issues:
+    types: [opened, reopened, labeled, edited]
   # Workflow can be triggered with a click of a button. User inputs issue number.
   workflow_dispatch:
     inputs:
       issue_number:
         description: "Issue Number"
         required: true
-  # Workflow is triggered automatically when an issue is opened/reopened
-  issues:
-    types: [opened, reopened]
 
 permissions:
   contents: write
@@ -28,6 +28,6 @@ jobs:
         with:
           owner: ${{ github.repository_owner }}
           repo: ${{ github.event.repository.name }}
-          issue: ${{ github.event.issue.number || github.event.inputs.issue_number }}
+          issue: ${{ github.event.issue.number || inputs.issue_number }}
           openai-api-key: ${{ secrets.OPENAI_API_KEY }}
           github-token: ${{ secrets.PAUL_GITHUB_TOKEN }}
