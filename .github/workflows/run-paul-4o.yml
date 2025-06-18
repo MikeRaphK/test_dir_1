@@ -1,4 +1,4 @@
-name: "Run PAUL"
+name: "Run PAUL with GPT-4o"
 
 on:
   workflow_dispatch:
