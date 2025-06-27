@@ -1,4 +1,4 @@
-name: "Run PAUL"
+name: "Run PAUL with GPT-4o"
 
 on:
   # Workflow is triggered automatically when an issue is opened, reopened, labeled, or edited.
