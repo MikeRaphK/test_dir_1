@@ -26,11 +26,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Show where repo is checked out
+      - name: Move to correct position
         run: |
           echo "GITHUB_WORKSPACE is $GITHUB_WORKSPACE"
           ls -al /__w/test_dir_1
           ls -al /__w/test_dir_1/test_dir_1
+          
 
       - name: List /github/workspace immediately after checkout
         run: |
@@ -54,7 +55,9 @@ jobs:
             ISSUE_NUMBER="${{ github.event.inputs.dispatch_issue_number }}"
           fi
 
+          mv /__w/test_dir_1/test_dir_1 /github/workspace
           cd /app
+          
           python3 /app/main.py github \
             --owner "${{ github.repository_owner }}" \
             --repo "${{ github.event.repository.name }}" \
