@@ -26,6 +26,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Show where repo is checked out
+        run: |
+          echo "GITHUB_WORKSPACE is $GITHUB_WORKSPACE"
+          ls -al $GITHUB_WORKSPACE
+
       - name: List /github/workspace immediately after checkout
         run: |
           echo "CWD: $(pwd)"
