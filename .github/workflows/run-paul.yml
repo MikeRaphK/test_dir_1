@@ -26,6 +26,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: List /github/workspace immediately after checkout
+        run: |
+          echo "CWD: $(pwd)"
+          ls -al /github/workspace || echo "/github/workspace does not exist"
+
       - name: Install tree and show directory structure
         run: |
           apt-get update && apt-get install -y tree
