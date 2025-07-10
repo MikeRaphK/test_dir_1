@@ -26,6 +26,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Install tree and show directory structure
+        run: |
+          apt-get update && apt-get install -y tree
+          tree -L 3 /
+          echo
+          tree -L 3 /github/workspace || echo "/github/workspace does not exist"
+
       - name: Run PAUL
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
