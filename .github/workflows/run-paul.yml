@@ -29,7 +29,8 @@ jobs:
       - name: Show where repo is checked out
         run: |
           echo "GITHUB_WORKSPACE is $GITHUB_WORKSPACE"
-          ls -al $GITHUB_WORKSPACE
+          ls -al /__w/test_dir_1
+          ls -al /__w/test_dir_1/test_dir_1
 
       - name: List /github/workspace immediately after checkout
         run: |
