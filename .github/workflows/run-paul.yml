@@ -26,25 +26,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Move to correct position
-        run: |
-          echo "GITHUB_WORKSPACE is $GITHUB_WORKSPACE"
-          ls -al /__w/test_dir_1
-          ls -al /__w/test_dir_1/test_dir_1
-          
-
-      - name: List /github/workspace immediately after checkout
-        run: |
-          echo "CWD: $(pwd)"
-          ls -al /github/workspace || echo "/github/workspace does not exist"
-
-      - name: Install tree and show directory structure
-        run: |
-          apt-get update && apt-get install -y tree
-          tree -L 3 /
-          echo
-          tree -L 3 /github/workspace || echo "/github/workspace does not exist"
-
       - name: Run PAUL
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
@@ -55,9 +36,7 @@ jobs:
             ISSUE_NUMBER="${{ github.event.inputs.dispatch_issue_number }}"
           fi
 
-          mv /__w/test_dir_1/test_dir_1 /github/workspace
           cd /app
-          
           python3 /app/main.py github \
             --owner "${{ github.repository_owner }}" \
             --repo "${{ github.event.repository.name }}" \
