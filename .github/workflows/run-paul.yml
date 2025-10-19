@@ -26,6 +26,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: List repository files
+        run: |
+          echo "Current working directory:"
+          pwd
+          echo "Repository contents:"
+          ls -la
+
       - name: Run PAUL
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
